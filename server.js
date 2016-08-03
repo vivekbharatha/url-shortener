@@ -89,7 +89,10 @@ app.get('/new/:url*', function (req, res, next) {
     });
 });
 
-app.get('/')
+app.get('/', function (req, res, next) {
+    var url = req.protocol + '://' + req.hostname + '/new/http://www.google.com';
+    return res.send('<h1>Url shortner</h1><p>Click here to create google short url</p> <a href="' + url + '">Shorten Google</a>');
+})
 
 var port = process.env.PORT || 8080;
 
